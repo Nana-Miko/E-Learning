@@ -34,5 +34,41 @@
         <url-pattern>/SelectUserList</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>UpdateUser</servlet-name>
+        <servlet-class>servlet.admin.UpdateUser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateUser</servlet-name>
+        <url-pattern>/UpdateUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddNotic</servlet-name>
+        <servlet-class>servlet.admin.AddNotic</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddNotic</servlet-name>
+        <url-pattern>/AddNotic</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Reg</servlet-name>
+        <servlet-class>servlet.Reg</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Reg</servlet-name>
+        <url-pattern>/Reg</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteUser</servlet-name>
+        <servlet-class>servlet.admin.DeleteUser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteUser</servlet-name>
+        <url-pattern>/DeleteUser</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

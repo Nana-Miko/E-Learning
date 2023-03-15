@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>登录页面</title>
@@ -50,12 +50,6 @@
     .container {
       padding: 20px;
     }
-    .containerReg {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100px;
-    }
 
     span.password {
       float: right;
@@ -66,22 +60,48 @@
       float: left;
       padding-top: 16px;
     }
+    .tooltip {
+      visibility: hidden;
+      position: absolute;
+      z-index: 1;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      /* Add more styles to customize the appearance of the tooltip */
+    }
   </style>
 </head>
 <body>
-<h1>欢迎来到E-Learning</h1>
-<form action="Login" method="post">
+<h1>注册页面</h1>
+<form action="Reg" method="post">
   <div class="container">
     <input type="text" placeholder="请输入账号" name="uname" required>
     <input type="password" placeholder="请输入密码" name="psw" required>
-    <button type="submit">登录</button>
-    <button type="button" onclick="link()">注册</button>
+    <input type="password" placeholder="请重复密码" name="Repsw" required>
+    <input type="text" placeholder="姓名" name="name" required>
+    <button type="submit">注册</button>
+    <span class="tooltip">两次输入的密码不一致，请重新输入。</span>
   </div>
 </form>
 <script>
-  function link(){
-    window.location.href = "reg.html";
-  }
+  const form = document.querySelector('form[action="Reg"]');
+  const tooltip = document.querySelector('.tooltip');
+  form.addEventListener('submit', function(event) {
+    const password = form.elements['psw'].value;
+    const confirmPassword = form.elements['Repsw'].value;
+    if (password !== confirmPassword) {
+      tooltip.style.visibility = 'visible';
+      setTimeout(function() {
+        tooltip.style.visibility = 'hidden';
+      }, 3000);
+      event.preventDefault();
+    } else {
+      tooltip.style.visibility = 'hidden';
+    }
+  });
 </script>
+
+
 </body>
+
 </html>

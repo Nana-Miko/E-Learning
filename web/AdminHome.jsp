@@ -10,112 +10,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>欢迎您，<span>${name}</span></title>
-    <style>
-        /* 样式 */
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        #header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        #nav {
-            background-color: #f2f2f2;
-            overflow: hidden;
-        }
-
-        #nav a {
-            float: left;
-            display: block;
-            color: black;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        #nav a:hover {
-            background-color: #ddd;
-        }
-
-        #content {
-            padding: 20px;
-        }
-        /* 设置表单样式 */
-        form {
-            background-color: #FFFFFF;
-            border: 1px solid #DDDDDD;
-            border-radius: 5px;
-            box-shadow: 0px 0px 5px #CCCCCC;
-            margin: 50px auto;
-            max-width: 400px;
-            padding: 20px;
-        }
-
-        /* 设置标签样式 */
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        /* 设置输入框样式 */
-        input[type=text], input[type=password], select {
-            border: 1px solid #CCCCCC;
-            border-radius: 3px;
-            font-size: 16px;
-            padding: 8px;
-            width: 100%;
-        }
-
-        /* 设置按钮样式 */
-        button[type=submit], button[type=reset] {
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 3px;
-            color: #FFFFFF;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-            padding: 10px;
-            width: 100%;
-        }
-
-        /* 设置提交按钮的悬停样式 */
-        button[type=submit]:hover {
-            background-color: #3E8E41;
-        }
-
-        /* 设置重置按钮的悬停样式 */
-        button[type=reset]:hover {
-            background-color: #CCCCCC;
-            color: #000000;
-        }
-    </style>
+    <title>欢迎您，${name}</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="header">
@@ -125,12 +21,8 @@
     <a href="#account-add">账号添加</a>
     <a href="#account-manage">账号管理</a>
     <a href="#announcement-manage">公告管理</a>
-    <a href="#account-reset" >账号设置</a>
 </div>
 <div id="content">
-    <div id="account-reset">
-
-    </div>
     <div id="account-add">
         <form action="AddUser" method="post">
             <label for="username">用户名：</label>
@@ -158,19 +50,25 @@
                 <th>学号</th>
                 <th>姓名</th>
                 <th>角色</th>
+                <th></th>
             </tr>
             <c:forEach items="${userinfoList}" var="userinfo">
                 <tr>
                     <td>${userinfo.id}</td>
                     <td>${userinfo.name}</td>
                     <td>${userinfo.role}</td>
+                    <td><a href="SelectUserList?id=${userinfo.id}&page=UpdateUser.jsp"><button class="linkbutton">修改</button></a></td>
                 </tr>
             </c:forEach>
         </table>
     </div>
     <div id="announcement-manage" style="display:none">
-        <h2>公告管理</h2>
-        <p>这是公告管理的内容。</p>
+        <form action="AddNotic" method="post">
+            <label for="notic">公告内容</label>
+            <textarea id="notic" name="notic" rows="5" cols="50"></textarea><br>
+            <button type="submit">发布</button>
+            <button type="reset">重置</button>
+        </form>
     </div>
 </div>
 <script>

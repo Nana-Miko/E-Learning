@@ -49,6 +49,9 @@ public class UserInfo implements Serializable {
         }
         return "";
     }
+    public int getRoleReal(){
+        return this.role;
+    }
 
     public void setRole(int role) {
         this.role = role;

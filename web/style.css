@@ -1,0 +1,114 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+#nav {
+    background-color: #f2f2f2;
+    overflow: hidden;
+}
+
+#nav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#nav a:hover {
+    background-color: #ddd;
+}
+
+#content {
+    padding: 20px;
+}
+/* 设置表单样式 */
+form {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #CCCCCC;
+    margin: 50px auto;
+    max-width: 400px;
+    padding: 20px;
+}
+
+/* 设置标签样式 */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* 设置输入框样式 */
+input[type=text], input[type=password], select {
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 8px;
+    width: 100%;
+}
+
+/* 设置按钮样式 */
+button[type=submit], button[type=reset],.linkbutton,.deletebutton {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 3px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.deletebutton:hover{
+    background: #ff1e1c;
+}
+/* 设置提交按钮的悬停样式 */
+button[type=submit]:hover {
+    background-color: #3E8E41;
+}
+
+/* 设置重置按钮的悬停样式 */
+button[type=reset]:hover {
+    background-color: #CCCCCC;
+    color: #000000;
+}
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    resize: none;
+}
