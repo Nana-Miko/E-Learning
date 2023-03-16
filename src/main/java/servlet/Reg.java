@@ -13,7 +13,7 @@ public class Reg extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ResponseUtil.setCharset(resp, req);
-        Authentication authentication = new Authentication(Integer.parseInt(req.getParameter("uname")),req.getParameter("psw"));
+        Authentication authentication = new Authentication(req.getParameter("uname"),req.getParameter("psw"));
         authentication.role = Role.STUDENT;
         authentication.name = req.getParameter("name");
         if (authentication.insert()){

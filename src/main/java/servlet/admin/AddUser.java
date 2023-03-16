@@ -1,10 +1,8 @@
 package servlet.admin;
 
 import Util.ResponseUtil;
-import Util.useDatabase.DataSelect;
 import database.Authentication;
 import servlet.Role;
-import servlet.admin.data.UserInfoList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +14,7 @@ public class AddUser extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ResponseUtil.setCharset(resp, req);
-        Authentication authentication = new Authentication(new Integer(req.getParameter("username")),req.getParameter("password"));
+        Authentication authentication = new Authentication(req.getParameter("username"),req.getParameter("password"));
         authentication.name = req.getParameter("name");
         System.out.println(req.getParameter("type"));
         switch (req.getParameter("type")){

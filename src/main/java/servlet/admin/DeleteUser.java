@@ -2,6 +2,7 @@ package servlet.admin;
 
 import Util.ResponseUtil;
 import Util.useDatabase.DataDelete;
+import servlet.data.UserInfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +14,7 @@ public class DeleteUser extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ResponseUtil.setCharset(resp, req);
-        if (DataDelete.delete(Integer.parseInt(req.getParameter("id")))){
+        if (DataDelete.delete(Integer.parseInt(req.getParameter("id")),new UserInfo())){
             resp.getWriter().println("<script>alert('删除成功!');window.location.href = 'SelectUserList?page=AdminHome.jsp'</script>");
         }
         else {

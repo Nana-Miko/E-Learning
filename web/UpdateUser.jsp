@@ -1,5 +1,5 @@
 <%@ page import="java.net.URLEncoder" %>
-<%@ page import="servlet.admin.data.UserInfo" %><%--
+<%@ page import="servlet.data.UserInfo" %><%--
   Created by IntelliJ IDEA.
   User: 11219
   Date: 2023/3/15

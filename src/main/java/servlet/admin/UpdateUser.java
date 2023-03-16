@@ -1,16 +1,14 @@
 package servlet.admin;
 
 import Util.ResponseUtil;
-import Util.useDatabase.DataDelete;
 import Util.useDatabase.DataUpdate;
-import servlet.admin.data.UserInfo;
+import servlet.data.UserInfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.URLDecoder;
 
 public class UpdateUser extends HttpServlet {
     @Override
@@ -18,7 +16,7 @@ public class UpdateUser extends HttpServlet {
         ResponseUtil.setCharset(resp, req);
         UserInfo userInfo = new UserInfo();
         userInfo.setId(Integer.parseInt(req.getParameter("id")));
-        userInfo.setNo(Integer.parseInt(req.getParameter("username")));
+        userInfo.setNo(req.getParameter("username"));
         userInfo.setPsw(req.getParameter("password"));
         userInfo.setName(req.getParameter("name"));
         userInfo.setRole(Integer.parseInt(req.getParameter("type")));

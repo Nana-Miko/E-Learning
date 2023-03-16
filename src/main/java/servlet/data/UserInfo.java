@@ -1,10 +1,10 @@
-package servlet.admin.data;
+package servlet.data;
 
 import java.io.Serializable;
 
 public class UserInfo implements Serializable {
     private int id;
-    private int no;
+    private String no;
     private String psw;
     private String name;
     private int role;
@@ -17,11 +17,11 @@ public class UserInfo implements Serializable {
         this.id = id;
     }
 
-    public int getNo() {
+    public String getNo() {
         return no;
     }
 
-    public void setNo(int no) {
+    public void setNo(String no) {
         this.no = no;
     }
 

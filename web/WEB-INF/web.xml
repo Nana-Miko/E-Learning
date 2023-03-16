@@ -70,5 +70,95 @@
         <url-pattern>/DeleteUser</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>GetNotice</servlet-name>
+        <servlet-class>servlet.api.GetNotice</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetNotice</servlet-name>
+        <url-pattern>/GetNotice</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddCourse</servlet-name>
+        <servlet-class>servlet.teacher.AddCourse</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCourse</servlet-name>
+        <url-pattern>/AddCourse</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SelectCourseList</servlet-name>
+        <servlet-class>servlet.teacher.SelectCourseList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SelectCourseList</servlet-name>
+        <url-pattern>/SelectCourseList</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UploadServlet</servlet-name>
+        <servlet-class>servlet.teacher.UploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadServlet</servlet-name>
+        <url-pattern>/UploadServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DownloadServlet</servlet-name>
+        <servlet-class>servlet.teacher.DownloadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DownloadServlet</servlet-name>
+        <url-pattern>/DownloadServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>servlet.teacher.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/DeleteServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateCourse</servlet-name>
+        <servlet-class>servlet.teacher.UpdateCourse</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateCourse</servlet-name>
+        <url-pattern>/UpdateCourse</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteCourse</servlet-name>
+        <servlet-class>servlet.teacher.DeleteCourse</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteCourse</servlet-name>
+        <url-pattern>/DeleteCourse</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddTask</servlet-name>
+        <servlet-class>servlet.teacher.AddTask</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddTask</servlet-name>
+        <url-pattern>/AddTask</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SeeTask</servlet-name>
+        <servlet-class>servlet.teacher.SeeTask</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SeeTask</servlet-name>
+        <url-pattern>/SeeTask</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

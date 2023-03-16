@@ -10,12 +10,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>欢迎您，${name}</title>
+    <title>欢迎您，${user.name}</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="header">
-    <h1>欢迎您，<span>${name}</span></h1>
+    <h1>欢迎您，<span>${user.name}</span></h1>
 </div>
 <div id="nav">
     <a href="#account-add">账号添加</a>

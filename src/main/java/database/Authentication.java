@@ -2,27 +2,26 @@ package database;
 
 import database.JDBC.DBUtil;
 import servlet.Role;
+import servlet.data.UserInfo;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 public class Authentication {
 
-    public int no;
+    public String no;
     public String psw;
     public Role role;
     public String name;
+    public UserInfo userInfo = new UserInfo();
 
-    public Authentication(int no, String psw) {
+    public Authentication(String no, String psw) {
         this.no = no;
         this.psw = psw;
+        userInfo.setNo(no);
+        userInfo.setPsw(psw);
     }
 
     public boolean insert(){
@@ -44,7 +43,7 @@ public class Authentication {
 
             stmt = conn.prepareStatement(sql);
 
-            stmt.setInt(1, this.no);
+            stmt.setString(1, this.no);
             stmt.setString(2,this.psw);
             stmt.setInt(3,this.role.getValue());
             stmt.setString(4,this.getName());
@@ -87,7 +86,7 @@ public class Authentication {
 
             stmt = conn.prepareStatement(sql);
 
-            stmt.setInt(1, this.no);
+            stmt.setString(1, this.no);
 
             res = stmt.executeQuery();
 
@@ -101,6 +100,9 @@ public class Authentication {
                     }
                     this.name = res.getString("name");
                 }
+                userInfo.setName(res.getString("name"));
+                userInfo.setId(res.getInt("id"));
+                userInfo.setRole(res.getInt("role"));
             }
 
             conn.commit();

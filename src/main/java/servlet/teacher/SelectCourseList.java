@@ -1,7 +1,9 @@
-package servlet.admin;
+package servlet.teacher;
 
 import Util.ResponseUtil;
 import Util.useDatabase.DataSelect;
+import servlet.data.CourseInfo;
+import servlet.data.CourseInfoList;
 import servlet.data.UserInfo;
 import servlet.data.UserInfoList;
 
@@ -11,22 +13,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class SelectUserList extends HttpServlet {
+public class SelectCourseList extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ResponseUtil.setCharset(resp, req);
         String page = req.getParameter("page");
         String id = req.getParameter("id");
-        UserInfoList userInfoList =  DataSelect.select(new UserInfoList());
+        CourseInfoList courseInfoList =  DataSelect.select(new CourseInfoList());
         if (id == null){
-            req.setAttribute("userinfoList",userInfoList);
+            req.setAttribute("courseInfoList",courseInfoList);
         }
         else {
             for (Object obj :
-                    userInfoList) {
-                UserInfo userInfo = (UserInfo) obj;
-                if (String.valueOf(userInfo.getId()).equals(id)){
-                    req.setAttribute("userinfo",userInfo);
+                    courseInfoList) {
+                CourseInfo courseInfo = (CourseInfo) obj;
+                if (String.valueOf(courseInfo.getId()).equals(id)){
+                    req.setAttribute("courseInfo",courseInfo);
                     break;
                 }
             }

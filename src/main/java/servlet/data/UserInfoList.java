@@ -1,4 +1,4 @@
-package servlet.admin.data;
+package servlet.data;
 
 import java.util.ArrayList;
 
