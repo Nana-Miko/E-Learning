@@ -1,5 +1,6 @@
 package servlet.data;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 
 public class MessageInfo implements Serializable {
@@ -8,6 +9,39 @@ public class MessageInfo implements Serializable {
     private int s_id;
     private String message;
     private int send;
+    private String t_name;
+    private String s_name;
+
+    public String getT_name() {
+        return t_name;
+    }
+
+    public void setT_name(String t_name) {
+        this.t_name = t_name;
+    }
+
+    public String getS_name() {
+        return s_name;
+    }
+
+    public void setS_name(String s_name) {
+        this.s_name = s_name;
+    }
+
+    public boolean isSelf(HttpServletRequest request){
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("user");
+        return userInfo.getRoleReal() == send;
+    }
+
+    public boolean isMyT_id(HttpServletRequest request){
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("user");
+        return userInfo.getId() == t_id;
+    }
+
+    public boolean isMyS_id(HttpServletRequest request){
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("user");
+        return userInfo.getId() == s_id;
+    }
 
     public int getId() {
         return id;

@@ -27,7 +27,7 @@ public class Login extends HttpServlet {
             case TEACHER -> {page = "SelectCourseList?page=TeacherHome.jsp";break;}
             case STUDENT -> {page = "StudentHome.jsp";break;}
         }
-
+        req.getSession().setAttribute("homePage",page);
         req.getSession().setAttribute("user",authentication.userInfo);
         req.getRequestDispatcher(page).forward(req, resp);
     }

@@ -1,0 +1,32 @@
+<button class="homebtn" id="homeBtn">Home</button>
+<style>
+  .homebtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    position: fixed;
+    top: 20px;
+    left: 15px;
+    z-index: 1001;
+  }
+
+  .homebtn:hover {
+    background-color: #444;
+  }
+
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const homeBtn = document.getElementById("homeBtn");
+
+    homeBtn.addEventListener("click", function() {
+      const homePage = '<%= session.getAttribute("homePage") %>';
+      if (homePage) {
+        window.location.href = homePage;
+      }
+    });
+  });
+</script>

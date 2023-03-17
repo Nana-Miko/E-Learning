@@ -53,6 +53,67 @@ public class DataSelect {
         return userinfos;
     }
 
+    public static MessageInfoList select(MessageInfoList messages) {
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet res = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            conn.setAutoCommit(false);
+
+            String sql = new StringBuffer()
+                    .append("SELECT * ")
+                    .append("FROM message")
+                    .toString();
+
+            stmt = conn.prepareStatement(sql);
+            res = stmt.executeQuery();
+
+            while (res.next()) {
+                MessageInfo messageInfo = new MessageInfo();
+                messageInfo.setId(res.getInt("id"));
+                messageInfo.setT_id(res.getInt("t_id"));
+                messageInfo.setS_id(res.getInt("s_id"));
+                messageInfo.setMessage(res.getString("message"));
+                messageInfo.setSend(res.getInt("send"));
+
+                messages.add(messageInfo);
+            }
+            conn.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        } finally {
+            DBUtil.close(conn, stmt);
+        }
+
+        for (MessageInfo messageInfo :
+                messages) {
+
+            for (Object obj:
+                    DataSelect.select(new UserInfoList())) {
+                UserInfo userInfo = (UserInfo) obj;
+                if (userInfo.getId()== messageInfo.getS_id()){
+                    messageInfo.setS_name(userInfo.getName());
+                }
+                if (userInfo.getId()== messageInfo.getT_id()){
+                    messageInfo.setT_name(userInfo.getName());
+                }
+
+
+
+            }
+        }
+        return messages;
+
+    }
+
     public static TaskInfoList select(TaskInfoList taskInfoList) {
 
         Connection conn = null;

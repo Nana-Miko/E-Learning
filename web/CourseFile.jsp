@@ -20,6 +20,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
+    <%@ include file="homebtn.html" %>
+
 <body>
 <%
     UserInfo user = (UserInfo) request.getSession().getAttribute("user");
@@ -42,7 +44,7 @@
 <div class="container">
     <div class="jumbotron">
         <h1 class="display-4">课程"${courseInfo.name}"资源</h1>
-        <p class="lead">在这里查看、预览、下载和删除文件。</p>
+        <p class="lead">在这里查看课程资源。</p>
     </div>
     <% if (files != null) { %>
     <table class="table table-striped table-hover">
@@ -80,7 +82,6 @@
         <button type="submit" class="btn btn-primary">上传文件</button>
     </form>
     <% } %>
-    <button class="btn btn-primary" onclick="window.history.back();">返回上级页面</button>
 </div>
 
 <!-- 预览模态窗口 -->

@@ -1,12 +1,11 @@
-<%@ page import="servlet.data.TaskInfoList" %>
 <%@ page import="Util.useDatabase.DataSelect" %>
-<%@ page import="servlet.data.TaskInfo" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.time.ZoneId" %>
 <%@ page import="java.time.Instant" %>
-<%@ page import="java.util.Map" %><%--
+<%@ page import="java.util.Map" %>
+<%@ page import="servlet.data.*" %><%--
   Created by IntelliJ IDEA.
   User: 11219
   Date: 2023/3/8
@@ -15,6 +14,8 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -191,8 +192,38 @@
 
         </table>
     </div>
-    <div id="view-consultation" style="display:none">
+    <%
+        MessageInfoList messageInfoListTemp = new MessageInfoList();
+        DataSelect.select(messageInfoListTemp);
+        MessageInfoList messageInfoList = new MessageInfoList();
+        HashMap<Integer,String> iname = new HashMap<>();
+        for (MessageInfo messageInfo :
+                messageInfoListTemp) {
+            if (messageInfo.isMyT_id(request)){
+                iname.put(messageInfo.getS_id(),messageInfo.getS_name());
+            }
+        }
 
+    %>
+    <div id="view-consultation" style="display:none">
+        <table>
+            <tr>
+                <th>学生id</th>
+                <th>学生姓名</th>
+                <th></th>
+            </tr>
+            <%
+                for (Map.Entry<Integer,String> entry:
+                        iname.entrySet()) {
+            %>
+            <tr>
+                <td><%=entry.getKey()%></td>
+                <td><%=entry.getValue()%></td>
+                <td><a href="ChatRoom.jsp?t_id=${user.id}&s_id=<%=entry.getKey()%>"><button class="linkbutton">查看</button></a></td>
+            </tr>
+            <%}%>
+
+        </table>
     </div>
 </div>
 <script>

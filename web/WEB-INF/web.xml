@@ -160,5 +160,23 @@
         <url-pattern>/SeeTask</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SendMessage</servlet-name>
+        <servlet-class>servlet.api.SendMessage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SendMessage</servlet-name>
+        <url-pattern>/sendMessage</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FetchMessage</servlet-name>
+        <servlet-class>servlet.api.FetchMessage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FetchMessage</servlet-name>
+        <url-pattern>/fetchMessage</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

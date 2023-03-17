@@ -107,15 +107,13 @@ CREATE TABLE `message` (
   `id` int NOT NULL AUTO_INCREMENT,
   `t_id` int NOT NULL COMMENT '老师id',
   `s_id` int NOT NULL COMMENT '学生id',
-  `message` int DEFAULT NULL,
-  `send` int DEFAULT NULL COMMENT '发布方，0是老师，1是学生',
+  `message` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `send` int DEFAULT NULL COMMENT '发布方，1是老师，2是学生',
   PRIMARY KEY (`id`),
   UNIQUE KEY `message_id_uindex` (`id`),
   KEY `fk_message_user_t_id` (`t_id`),
-  KEY `fk_message_user_s_id` (`s_id`),
-  CONSTRAINT `fk_message_user_s_id` FOREIGN KEY (`s_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_message_user_t_id` FOREIGN KEY (`t_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `fk_message_user_s_id` (`s_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,6 +122,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
+INSERT INTO `message` VALUES (2,15,17,'123',1),(3,15,17,'可以啊',1),(4,15,17,'ok',1),(5,15,17,'asd',1),(6,15,17,'你好',1),(7,15,17,'okok',1),(8,15,17,'？',1),(9,15,17,'ok',1),(10,15,17,'老师你好么',1),(11,15,17,'五五',1),(12,15,17,'？',1),(13,15,17,'呃呃',1),(14,15,17,'你好',1),(15,15,17,'擦掉',1),(16,15,17,'呃呃',1),(17,15,17,'okok',1),(18,15,17,'asd',1),(19,15,17,'啊搜',1),(20,15,17,'？？？？',1),(21,15,17,'呃呃',1),(22,15,17,'出来！',1),(23,15,17,'华东',1),(24,15,17,'test',1),(25,15,17,'ok',1),(26,15,17,'老师你好',2),(27,15,17,'dsadsa',1),(28,15,17,'大苏打撒',1);
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +153,7 @@ CREATE TABLE `task` (
 
 LOCK TABLES `task` WRITE;
 /*!40000 ALTER TABLE `task` DISABLE KEYS */;
-INSERT INTO `task` VALUES (2,'啊实打实的','asdasd','asdsa','asdasdas','asdasd','D','1678983982137');
+INSERT INTO `task` VALUES (2,'啊实打实的','asdasd','asdsa','asdasdas','asdasd','D','1678983982137'),(2,'阿嘎','大概','撒旦给','爱的故事','撒旦给','D','1679031316192'),(2,'阿桑的歌大概','附加费公积金','飞机函数返回','的是否合适','的水分挥发的是','C','1679031316192');
 /*!40000 ALTER TABLE `task` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,7 +199,7 @@ CREATE TABLE `user` (
   `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   UNIQUE KEY `user_id_uindex` (`id`),
   UNIQUE KEY `user_no_uindex` (`no`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,7 +208,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'123456','123456',0,'管理员'),(15,'112233','123456',1,'小明');
+INSERT INTO `user` VALUES (1,'123456','123456',0,'管理员'),(15,'112233','123456',1,'小明'),(17,'xs','123456',2,'李四');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -222,4 +221,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-17  1:13:43
+-- Dump completed on 2023-03-17 13:39:15
