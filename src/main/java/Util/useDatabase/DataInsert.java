@@ -3,6 +3,7 @@ package Util.useDatabase;
 import database.JDBC.DBUtil;
 import servlet.data.CourseInfo;
 import servlet.data.MessageInfo;
+import servlet.data.StudentClass;
 import servlet.data.TaskInfo;
 
 import java.sql.Connection;
@@ -180,5 +181,47 @@ public class DataInsert {
             DBUtil.close(conn, stmt);
         }
         return finish;
+    }
+
+    public static boolean insert(StudentClass studentClass)
+    {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet res = null;
+        boolean finish = true;
+
+        try {
+            conn = DBUtil.getConnection();
+            conn.setAutoCommit(false);
+
+
+            String sql = new StringBuffer()
+                    .append("insert into course_select")
+                    .append("(c_id,s_id) ")
+                    .append("values(?,?)")
+                    .toString();
+
+            stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1,studentClass.getC_id());
+            stmt.setInt(2,studentClass.getS_id());
+
+            stmt.executeUpdate();
+
+
+            conn.commit();
+        } catch (SQLException e) {
+            finish = false;
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        } finally {
+            DBUtil.close(conn, stmt);
+        }
+        return finish;
+
     }
 }

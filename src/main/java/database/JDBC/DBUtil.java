@@ -9,7 +9,7 @@ public class DBUtil {
     static String driverClassName = "com.mysql.cj.jdbc.Driver";
     static String url = "jdbc:mysql://localhost:3306/eLearning";
     static String username = "root";
-    static String password = "root";
+    static String password = "123456";
 
     static {
         try {

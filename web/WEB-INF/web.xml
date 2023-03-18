@@ -178,5 +178,17 @@
         <url-pattern>/fetchMessage</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SelectCrouseServlet</servlet-name>
+        <servlet-class>servlet.student.SelectCrouseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SelectCrouseServlet</servlet-name>
+        <url-pattern>/selectCrouseServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+
 
 </web-app>

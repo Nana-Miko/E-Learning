@@ -25,7 +25,7 @@ public class Login extends HttpServlet {
         switch (authentication.getRole()){
             case ADMIN -> {page = "SelectUserList?page=AdminHome.jsp";break;}
             case TEACHER -> {page = "SelectCourseList?page=TeacherHome.jsp";break;}
-            case STUDENT -> {page = "StudentHome.jsp";break;}
+            case STUDENT -> {page = "SelectCourseList?page=StudentHome.jsp";break;}
         }
         req.getSession().setAttribute("homePage",page);
         req.getSession().setAttribute("user",authentication.userInfo);
