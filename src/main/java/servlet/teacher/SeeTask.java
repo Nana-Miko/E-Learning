@@ -17,8 +17,12 @@ public class SeeTask extends HttpServlet {
         ResponseUtil.setCharset(resp, req);
         int c_id = Integer.parseInt(req.getParameter("c_id"));
         long time = Long.parseLong(req.getParameter("time"));
+
         TaskInfoList taskInfoListTemp = new TaskInfoList();
+
         TaskInfoList taskInfoList = new TaskInfoList();
+
+
         DataSelect.select(taskInfoListTemp);
         for (TaskInfo taskInfo:
              taskInfoListTemp) {

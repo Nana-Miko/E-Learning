@@ -6,20 +6,33 @@
   <style>
     body {
       background-color: #f1f1f1;
+      background-image: url('background.jpg');
+      background-size: cover;
     }
 
     h1 {
       text-align: center;
-      margin-top: 50px;
+      margin-top: 260px;
+      font-size: 36px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px #000;
+      color: #fff;
+      /*background-color: #333;*/
+      padding: 10px;
+      border-radius: 10px;
     }
 
     form {
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.5);
       max-width: 500px;
       margin: 0 auto;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0px 0px 10px #888;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     input[type=text], input[type=password] {
@@ -41,6 +54,7 @@
       border-radius: 4px;
       cursor: pointer;
       width: 100%;
+
     }
 
     button:hover {
@@ -71,7 +85,7 @@
 <body>
 <h1>欢迎来到E-Learning</h1>
 <form action="Login" method="post">
-  <div class="container">
+  <div class="container" >
     <input type="text" placeholder="请输入账号" name="uname" required>
     <input type="password" placeholder="请输入密码" name="psw" required>
     <button type="submit">登录</button>

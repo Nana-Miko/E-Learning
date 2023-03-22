@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 public class TaskDoInfo implements Serializable {
     private int s_id;
+    private String s_name;
     private int c_id;
     private String score;
     private long time;
-    private String s_name;
+
     private long finish_time;
 
     public long getFinish_time() {
