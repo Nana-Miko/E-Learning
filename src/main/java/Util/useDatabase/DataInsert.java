@@ -1,9 +1,7 @@
 package Util.useDatabase;
 
 import database.JDBC.DBUtil;
-import servlet.data.CourseInfo;
-import servlet.data.MessageInfo;
-import servlet.data.TaskInfo;
+import servlet.data.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -162,6 +160,96 @@ public class DataInsert {
             stmt.setInt(2,messageInfo.getS_id());
             stmt.setString(3,messageInfo.getMessage());
             stmt.setInt(4,messageInfo.getSend());
+
+
+            stmt.executeUpdate();
+
+
+            conn.commit();
+        } catch (SQLException e) {
+            finish = false;
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        } finally {
+            DBUtil.close(conn, stmt);
+        }
+        return finish;
+    }
+
+    public static boolean insert(StudentClass studentClass)
+    {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet res = null;
+        boolean finish = true;
+
+        try {
+            conn = DBUtil.getConnection();
+            conn.setAutoCommit(false);
+
+
+            String sql = new StringBuffer()
+                    .append("insert into course_select")
+                    .append("(c_id,s_id) ")
+                    .append("values(?,?)")
+                    .toString();
+
+            stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1,studentClass.getC_id());
+            stmt.setInt(2,studentClass.getS_id());
+
+            stmt.executeUpdate();
+
+
+            conn.commit();
+        } catch (SQLException e) {
+            finish = false;
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        } finally {
+            DBUtil.close(conn, stmt);
+        }
+        return finish;
+
+    }
+
+
+
+    public static boolean insert(TaskDoInfo taskDoInfo){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet res = null;
+        boolean finish = true;
+
+        try {
+            conn = DBUtil.getConnection();
+            conn.setAutoCommit(false);
+
+
+            String sql = new StringBuffer()
+                    .append("insert into task_do ")
+                    .append("(s_id,s_name,c_id,score,time,finish_time) ")
+                    .append("values(?,?,?,?,?,?)")
+                    .toString();
+
+            stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1,taskDoInfo.getS_id());
+            stmt.setString(2,taskDoInfo.getS_name());
+            stmt.setInt(3,taskDoInfo.getC_id());
+            stmt.setString(4,taskDoInfo.getScore());
+            stmt.setLong(5,taskDoInfo.getTime());
+            stmt.setLong(6,taskDoInfo.getFinish_time());
+
 
 
             stmt.executeUpdate();

@@ -17,9 +17,13 @@ public class SelectCourseList extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ResponseUtil.setCharset(resp, req);
+        // 获取参数
         String page = req.getParameter("page");
+        // 获取id
         String id = req.getParameter("id");
+        // 选出课程表里的所有信息
         CourseInfoList courseInfoList =  DataSelect.select(new CourseInfoList());
+
         if (id == null){
             req.setAttribute("courseInfoList",courseInfoList);
         }
@@ -33,6 +37,7 @@ public class SelectCourseList extends HttpServlet {
                 }
             }
         }
+
 
         req.getRequestDispatcher(page).forward(req, resp);
     }

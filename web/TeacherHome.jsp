@@ -76,12 +76,23 @@
             color: white;
             padding: 15px;
         }
+
+        #header {
+            background-image: url('headback.jpg'); /* 设置背景图片 */
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            padding: 50px 0;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
+
 <div id="header">
     <h1>欢迎您，<span>${user.name}</span>老师</h1>
 </div>
+
 <div id="sidebar" class="sidebar">
     <div class="closebtn" onclick="toggleSidebar()">&times;</div>
     <div id="noticeContainer"></div>
@@ -96,6 +107,7 @@
     <a href="#test-management">测试管理</a>
     <a href="#view-consultation">查看咨询</a>
 </div>
+
 <div id="content">
     <div id="course-release">
         <form action="AddCourse" method="post">
@@ -111,6 +123,8 @@
 
         </form>
     </div>
+
+
     <div id="course-management"style="display:none">
         <table>
             <tr>
@@ -135,6 +149,7 @@
             </c:forEach>
         </table>
     </div>
+
     <div id="test-release" style="display:none">
         <form action="AddTask" method="post">
             <label for="question-count">输入题目数量</label>
@@ -146,11 +161,16 @@
             <button type="submit">发布</button>
         </form>
     </div>
+
+
     <div id="test-management" style="display:none">
         <%
+
             TaskInfoList taskInfoList = new TaskInfoList();
+            // 从考试表选出所有数据
             DataSelect.select(taskInfoList);
 
+            // 两个hash数组
             HashMap<String,ArrayList<Integer>> sla = new HashMap<>();
             HashMap<String,Long> th = new HashMap<>();
 
@@ -165,7 +185,8 @@
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                 // 使用指定的时区和格式将Instant对象转换为时间字符串
                 String dateTimeStr = formatter.format(instant.atZone(zoneId));
-                la.add(taskInfo.getC_id());la.add(taskInfo.getTaskDoInfoList().size());
+                la.add(taskInfo.getC_id());
+                la.add(taskInfo.getTaskDoInfoList().size());
                 sla.put(dateTimeStr,la);
                 th.put(dateTimeStr,taskInfo.getTime());
 
@@ -226,6 +247,7 @@
         </table>
     </div>
 </div>
+
 <script>
     // JS代码
     const navLinks = document.querySelectorAll('#nav a');
@@ -245,6 +267,7 @@
         });
     });
 </script>
+
 <script>
     var notice = "公告：<br>";
 
@@ -285,6 +308,7 @@
 
     setInterval(fetchNotice, 1000);
 </script>
+
 <script>
     document.getElementById('question-count').addEventListener('input', function (event) {
         const questionCount = parseInt(event.target.value, 10);

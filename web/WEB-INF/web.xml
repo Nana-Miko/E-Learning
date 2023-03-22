@@ -178,5 +178,44 @@
         <url-pattern>/fetchMessage</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>InsertCrouseServlet</servlet-name>
+        <servlet-class>servlet.student.InsertCrouseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertCrouseServlet</servlet-name>
+        <url-pattern>/insertCrouseServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SelectCrouse</servlet-name>
+        <servlet-class>servlet.student.SelectCrouse</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SelectCrouse</servlet-name>
+        <url-pattern>/selectCrouse</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>DoTask</servlet-name>
+        <servlet-class>servlet.student.DoTask</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DoTask</servlet-name>
+        <url-pattern>/doTask</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>StudentTest</servlet-name>
+        <servlet-class>servlet.student.StudentTest</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StudentTest</servlet-name>
+        <url-pattern>/studentTest</url-pattern>
+    </servlet-mapping>
+
+
+
 
 </web-app>
